@@ -1,0 +1,5 @@
+filegroup(
+    name = "golint",
+    srcs = glob(["*.go"]),
+    visibility = ["//visibility:public"],
+)

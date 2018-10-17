@@ -51,7 +51,8 @@ func TestAll(t *testing.T) {
 		t.Fatalf("no files in %v", baseDir)
 	}
 	for _, fi := range fis {
-		if !rx.MatchString(fi.Name()) {
+		// Skip Bazel BUILD files.
+		if fi.Name() == "BUILD.bazel" || !rx.MatchString(fi.Name()) {
 			continue
 		}
 		t.Run(fi.Name(), func(t *testing.T) {

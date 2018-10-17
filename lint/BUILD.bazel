@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "config.go",
+        "failure.go",
+        "file.go",
+        "formatter.go",
+        "linter.go",
+        "package.go",
+        "rule.go",
+        "utils.go",
+    ],
+    importpath = "github.com/mgechev/revive/lint",
+    visibility = ["//visibility:public"],
+    deps = ["@org_golang_x_tools//go/gcexportdata:go_default_library"],
+)

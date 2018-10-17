@@ -1,0 +1,54 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["utils.go"],
+    importpath = "github.com/mgechev/revive/test",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lint:go_default_library",
+        "@com_github_pkg_errors//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "add-constant_test.go",
+        "argument-limit_test.go",
+        "atomic_test.go",
+        "bool-literal-in-expr_test.go",
+        "confusing-naming_test.go",
+        "confusing-results_test.go",
+        "constant-logical-expr_test.go",
+        "cyclomatic_test.go",
+        "deep-exit_test.go",
+        "disable-annotations_test.go",
+        "empty-block_test.go",
+        "empty-lines_test.go",
+        "file-header_test.go",
+        "flag-param_test.go",
+        "function-result-limit_test.go",
+        "get-return_test.go",
+        "golint_test.go",
+        "import-blacklist_test.go",
+        "max-public-structs_test.go",
+        "modifies-param_test.go",
+        "modifies-value-receiver_test.go",
+        "range-val-in-closure_test.go",
+        "redefines-builtin-id_test.go",
+        "struct-tag_test.go",
+        "superfluous-else_test.go",
+        "unnecessary-stmt_test.go",
+        "unreachable-code_test.go",
+        "unused-param_test.go",
+        "var-naming_test.go",
+        "waitgroup-by-value_test.go",
+    ],
+    data = ["//fixtures:fixtures"],
+    embed = [":go_default_library"],
+    deps = [
+        "//lint:go_default_library",
+        "//rule:go_default_library",
+    ],
+)

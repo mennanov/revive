@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "checkstyle.go",
+        "default.go",
+        "friendly.go",
+        "json.go",
+        "ndjson.go",
+        "severity.go",
+        "stylish.go",
+        "unix.go",
+    ],
+    importpath = "github.com/mgechev/revive/formatter",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lint:go_default_library",
+        "@com_github_fatih_color//:go_default_library",
+        "@com_github_olekukonko_tablewriter//:go_default_library",
+    ],
+)
